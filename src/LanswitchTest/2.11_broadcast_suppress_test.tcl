@@ -6,6 +6,9 @@
 	# { //192.168.0.100/3/6 EthernetFiber SPEED_1G } 
 # }
 
+set FRAME_LENGTH 512
+set LOAD 10
+
 set PORT_LIST [lrange $configStr 0 1]
 
 #广播抑制测试
@@ -13,17 +16,23 @@ proc main { } {
 if {[catch {
     global PORT_LIST
     global DURATION
+    global FRAME_LENGTH
+    global LOAD
 
     set stream_name(1) "Stream(multicast)"
     set stream_name(2) "Stream(unicast)"
     set stream_name(3) "Stream(broadcast)"
+    set stream_name(4) "Stream(unicast known)"
 
     set port_object_list [init_env $PORT_LIST]
     lappend tx_port_list [lindex $port_object_list 0]
 
-    set stream_block_list [init_2_11_stream [lindex $port_object_list 0]]
+    lappend learn_port_list [lindex $port_object_list 1]
+    set learn_stream_list [init_2_11_learn_stream [lindex $port_object_list 1]]
 
-    set generator_list [init_generator_with_duration $tx_port_list $DURATION 100 "START_OF_FRAME"]
+    set stream_block_list [init_2_11_stream [lindex $port_object_list 0] $FRAME_LENGTH]
+
+    set generator_list [init_generator_with_duration $tx_port_list $DURATION $LOAD "START_OF_FRAME"]
     set analyzer_list [init_analyzer $port_object_list]
     config_result_view_mode JITTER
     

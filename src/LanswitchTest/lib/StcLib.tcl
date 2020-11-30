@@ -1496,7 +1496,7 @@ proc init_2_5_stream { port2 static_mac } {
 }
 
 #针对2.11 广播抑制测试
-proc init_2_11_stream { port2 } {
+proc init_2_11_stream { port2 {frame_length 512} } {
     set StreamBlock(1) [stc::create "StreamBlock" \
         -under $port2 \
         -IsControlledByGenerator "TRUE" \
@@ -1510,7 +1510,7 @@ proc init_2_11_stream { port2 } {
         -EnableControlPlane "FALSE" \
         -InsertSig "TRUE" \
         -FrameLengthMode "FIXED" \
-        -FixedFrameLength "128" \
+        -FixedFrameLength $frame_length \
         -MinFrameLength "128" \
         -MaxFrameLength "256" \
         -StepFrameLength "1" \
@@ -1544,7 +1544,7 @@ proc init_2_11_stream { port2 } {
         -EnableControlPlane "FALSE" \
         -InsertSig "TRUE" \
         -FrameLengthMode "FIXED" \
-        -FixedFrameLength "128" \
+        -FixedFrameLength $frame_length \
         -MinFrameLength "128" \
         -MaxFrameLength "256" \
         -StepFrameLength "1" \
@@ -1578,7 +1578,7 @@ proc init_2_11_stream { port2 } {
         -EnableControlPlane "FALSE" \
         -InsertSig "TRUE" \
         -FrameLengthMode "FIXED" \
-        -FixedFrameLength "128" \
+        -FixedFrameLength $frame_length \
         -MinFrameLength "128" \
         -MaxFrameLength "256" \
         -StepFrameLength "1" \
@@ -1599,11 +1599,91 @@ proc init_2_11_stream { port2 } {
         -LocalActive "TRUE" \
         -Name {broadcast} ]
 
+    set StreamBlock(4) [stc::create "StreamBlock" \
+        -under $port2 \
+        -IsControlledByGenerator "TRUE" \
+        -ControlledBy {generator} \
+        -TrafficPattern "PAIR" \
+        -EndpointMapping "ONE_TO_ONE" \
+        -EnableStreamOnlyGeneration "TRUE" \
+        -EnableBidirectionalTraffic "FALSE" \
+        -EqualRxPortDistribution "FALSE" \
+        -EnableTxPortSendingTrafficToSelf "FALSE" \
+        -EnableControlPlane "FALSE" \
+        -InsertSig "TRUE" \
+        -FrameLengthMode "FIXED" \
+        -FixedFrameLength $frame_length \
+        -MinFrameLength "128" \
+        -MaxFrameLength "256" \
+        -StepFrameLength "1" \
+        -FillType "CONSTANT" \
+        -ConstantFillPattern "0" \
+        -EnableFcsErrorInsertion "FALSE" \
+        -Filter {Device,MPLS-TP,Bfd,Rip,Lldp,Ieee1588v2,Bgp,Isis,Ldp,Stp,Ospfv3,Lacp,Pim,Rsvp,Ospfv2,FCoE,FCPlugin,FCoEVFPort,FCFPort,TwampClient,TwampServer,LspPing,Lisp,Otv,Openflow Protocol,VXLAN Protocol,PppoeProtocol,Ancp,PppProtocol,802.1x,Trill Protocol,Vepa,Packet Channel,SyncE,Dhcpv4,Dhcpv6,Cifs,Http,RawTcp,Sip,Ftp,Dpg,Video,XMPPvJ,CSMP,IPv4} \
+        -ShowAllHeaders "FALSE" \
+        -AllowInvalidHeaders "FALSE" \
+        -AutoSelectTunnel "FALSE" \
+        -ByPassSimpleIpSubnetChecking "FALSE" \
+        -EnableHighSpeedResultAnalysis "TRUE" \
+        -EnableBackBoneTrafficSendToSelf "TRUE" \
+        -EnableResolveDestMacAddress "TRUE" \
+        -AdvancedInterleavingGroup "0" \
+        -FrameConfig {<frame><config><pdus><pdu name="eth1" pdu="ethernet:EthernetII"><dstMac>00:01:01:00:00:05</dstMac><srcMac>[get_port_mac $port2]</srcMac></pdu></pdus></config></frame>} \
+        -Active "TRUE" \
+        -LocalActive "TRUE" \
+        -Name {error stream} ]
+
     stc::apply
     
     lappend stream_block_list $StreamBlock(1)
     lappend stream_block_list $StreamBlock(2)
     lappend stream_block_list $StreamBlock(3)
+    lappend stream_block_list $StreamBlock(4)
+    
+    return $stream_block_list
+}
+
+proc init_2_11_learn_stream { port1 } {
+    set StreamBlock(1) [stc::create "StreamBlock" \
+        -under $port1 \
+        -IsControlledByGenerator "TRUE" \
+        -ControlledBy {generator} \
+        -TrafficPattern "PAIR" \
+        -EndpointMapping "ONE_TO_ONE" \
+        -EnableStreamOnlyGeneration "TRUE" \
+        -EnableBidirectionalTraffic "FALSE" \
+        -EqualRxPortDistribution "FALSE" \
+        -EnableTxPortSendingTrafficToSelf "FALSE" \
+        -EnableControlPlane "FALSE" \
+        -InsertSig "TRUE" \
+        -FrameLengthMode "FIXED" \
+        -FixedFrameLength "128" \
+        -MinFrameLength "128" \
+        -MaxFrameLength "256" \
+        -StepFrameLength "1" \
+        -FillType "CONSTANT" \
+        -ConstantFillPattern "0" \
+        -EnableFcsErrorInsertion "FALSE" \
+        -Filter {Device,MPLS-TP,Bfd,Rip,Lldp,Ieee1588v2,Bgp,Isis,Ldp,Stp,Ospfv3,Lacp,Pim,Rsvp,Ospfv2,FCoE,FCPlugin,FCoEVFPort,FCFPort,TwampClient,TwampServer,LspPing,Lisp,Otv,Openflow Protocol,VXLAN Protocol,PppoeProtocol,Ancp,PppProtocol,802.1x,Trill Protocol,Vepa,Packet Channel,SyncE,Dhcpv4,Dhcpv6,Cifs,Http,RawTcp,Sip,Ftp,Dpg,Video,XMPPvJ,CSMP,IPv4} \
+        -ShowAllHeaders "FALSE" \
+        -AllowInvalidHeaders "FALSE" \
+        -AutoSelectTunnel "FALSE" \
+        -ByPassSimpleIpSubnetChecking "FALSE" \
+        -EnableHighSpeedResultAnalysis "TRUE" \
+        -EnableBackBoneTrafficSendToSelf "TRUE" \
+        -EnableResolveDestMacAddress "TRUE" \
+        -AdvancedInterleavingGroup "0" \
+        -FrameConfig {<frame><config><pdus><pdu name="eth1" pdu="ethernet:EthernetII"><dstMac>FF:FF:FF:FF:FF:FF</dstMac><srcMac>00:01:01:00:00:05</srcMac></pdu></pdus></config></frame>} \
+        -Active "TRUE" \
+        -LocalActive "TRUE" \
+        -Name {learn stream} ]
+
+    stc::apply
+    
+    lappend stream_block_list $StreamBlock(1)
+    lappend stream_block_list $StreamBlock(2)
+    lappend stream_block_list $StreamBlock(3)
+    lappend stream_block_list $StreamBlock(4)
     
     return $stream_block_list
 }
