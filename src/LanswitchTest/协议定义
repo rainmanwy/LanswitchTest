@@ -1,0 +1,58 @@
+流程
+1、进入项目详情后开始调脚本  main.tcl
+2、连接机框时，发送连接机框命令
+3、连通测试时，发送连通测试命令
+4、进行测试项测试时，发送测试项测试命令
+
+
+
+#####CONNECTCHASSIS,[{"ChassisIp":"192.168.0.100"}]
+
+#####PORTSCAN,[{"port":"10","wireType":"EthernetFiber","slot":"2","id":"52f3e57e04d64a528c03dada24b24a5e","speed":"AUTO","status":"Available"},{"port":"7","wireType":"EthernetFiber","slot":"2","id":"66478fe7f0ed4a04b29786d51ace5ec6","speed":"SPEED_10M","status":"Available"},{"port":"7","wireType":"EthernetFiber","slot":"2","id":"66d25d59253e4abdbbf0542bdfa70973","speed":"SPEED_10M","status":"Available"},{"port":"1","wireType":"EthernetCopper","slot":"6","id":"b55cfc9c7bbd4bd7be8d2523cede407f","speed":"SPEED_10M","status":"Available"}]
+
+
+#####CONNECT,[{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"1","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"2","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"3","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"7","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"9","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"}]
+
+
+
+#####PORTSCAN,[{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"1","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"2","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"3","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"4","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"5","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"}{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"6","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"7","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"8","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"9","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"10","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"}{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"11","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"12","slot":"3","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"1","slot":"2","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"2","slot":"2","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"},{"id":"52f3e57e04d64a528c03dada24b24a5e","location":"192.168.0.100","model":"asfasfsfs","status":"Available","port":"3","slot":"2","Type":"EthernetFiber","speed":"AUTO","taskId":"1","switchId":"1","switchPort":"1"}]
+
+
+
+#####getSpirentCard,[{"pgLocation":"//192.168.0.100/2/1","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/2","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/3","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/4","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/5","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/6","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/7","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/8","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/9","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/10","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/11","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/2/12","model":"CM-1G-D12","status":"Available"},{"pgLocation":"//192.168.0.100/3/1","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/2","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/3","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/4","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/5","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/6","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/7","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/8","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/9","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/10","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/11","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/3/12","model":"EDM-1003B","status":"Available"},{"pgLocation":"//192.168.0.100/4/1","model":"CM-1G-D4","status":"Available"},{"pgLocation":"//192.168.0.100/4/2","model":"CM-1G-D4","status":"Available"},{"pgLocation":"//192.168.0.100/4/3","model":"CM-1G-D4","status":"Available"},{"pgLocation":"//192.168.0.100/4/4","model":"CM-1G-D4","status":"Available"},{"pgLocation":"//192.168.0.100/6/1","model":"MX-10G-S2","status":"Available"},{"pgLocation":"//192.168.0.100/6/2","model":"MX-10G-S2","status":"Available"}]
+
+
+
+#####TESTTASK,{remark:"t0001",configStr:"{{ //192.168.0.100/3/1 EthernetFiber AUTO }{ //192.168.0.100/3/2 EthernetFiber AUTO }{ //192.168.0.100/3/3 EthernetFiber AUTO }{ //192.168.0.100/3/4 EthernetFiber AUTO }{ //192.168.0.100/3/5 EthernetFiber AUTO }{ //192.168.0.100/3/6 EthernetFiber AUTO }}",SwitchTemp:"null",ComPort:"COM1",DURATION:"",FRAME_LIST:"",LOAD_LIST:"",REPEAT_TIME:""}
+
+#####TESTTASK,{remark:"t0011",configStr:"{{ //192.168.0.100/3/1 EthernetFiber AUTO }{ //192.168.0.100/3/2 EthernetFiber AUTO }{ //192.168.0.100/3/3 EthernetFiber AUTO }{ //192.168.0.100/3/4 EthernetFiber AUTO }{ //192.168.0.100/3/5 EthernetFiber AUTO }{ //192.168.0.100/3/6 EthernetFiber AUTO }}",SwitchTemp:"null",ComPort:"COM1",DURATION:"60",FRAME_LIST:"64 65 128 256 512 1024 1280 1518",LOAD_LIST:"",REPEAT_TIME:""}
+
+
+#####TESTTASK,{remark:"t0011",configStr:"{{ //192.168.0.100/3/4 EthernetFiber AUTO }{ //192.168.0.100/3/5 EthernetFiber AUTO }{ //192.168.0.100/3/3 EthernetFiber AUTO }{ //192.168.0.100/3/1 EthernetFiber AUTO }{ //192.168.0.100/3/6 EthernetFiber AUTO }{ //192.168.0.100/3/2 EthernetFiber AUTO }}",SwitchTemp:"null",ComPort:"COM1",DURATION:"60",FRAME_LIST:"64 65 128 256 512 1024 1280 1518",LOAD_LIST:"",REPEAT_TIME:""}
+
+#####TESTTASK,{remark:"t0011",configStr:"{{ //192.168.0.100/3/3 EthernetFiber SPEED_1G }{ //192.168.0.100/3/2 EthernetFiber SPEED_1G }{ //192.168.0.100/3/1 EthernetFiber SPEED_1G }{ //192.168.0.100/3/4 EthernetFiber SPEED_1G }}",SwitchTemp:"null",ComPort:"COM1",DURATION:"60",FRAME_LIST:"64 65 128 256 512 1024 1280 1518",LOAD_LIST:"",REPEAT_TIME:""}
+
+#####getSpirentCard,[{location:\"//192.168.0.100/2/1\",model:\"CM-1G-D12\",status:\"bilsum@DESKTOP-G3DFLIC\"},{location:\"//192.168.0.100/2/1\",model:\"CM-1G-D12\",status:\"bilsum@DESKTOP-G3DFLIC\"}]
+
+
+#####getSpirentCard,[{location:\"//192.168.0.100/2/1\",model:\"CM-1G-D12\",status:\"bilsum@DESKTOP-G3DFLIC\"},{location:\"//192.168.0.100/2/1\",model:\"CM-1G-D12\",status:\"bilsum@DESKTOP-G3DFLIC\"}]
+
+public class BaseSpirentCard {
+ public  String id="";
+ public  String location="";
+ public  String model="";
+ public  String status="";
+ //第几个口
+ public  String port="";
+ //第几排
+ public  String slot="";
+ //光电口 #光口: EthernetFiber, 电口：EthernetCopper
+ public  String type="";
+ //#端口速率:   SPEED_10M, SPEED_100M, SPEED_1G, SPEED_10G, SPEED_40G, SPEED_100G
+ public  String speed="";
+
+ public  String taskId="";
+ public String switchId="";
+ public String switchPort="";
+ 
+}
