@@ -1681,9 +1681,6 @@ proc init_2_11_learn_stream { port1 } {
     stc::apply
     
     lappend stream_block_list $StreamBlock(1)
-    lappend stream_block_list $StreamBlock(2)
-    lappend stream_block_list $StreamBlock(3)
-    lappend stream_block_list $StreamBlock(4)
     
     return $stream_block_list
 }

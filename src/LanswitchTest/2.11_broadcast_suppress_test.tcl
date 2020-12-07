@@ -32,9 +32,19 @@ if {[catch {
 
     set stream_block_list [init_2_11_stream [lindex $port_object_list 0] $FRAME_LENGTH]
 
+    set learn_generator_list [init_generator_with_duration $learn_port_list 1 10 "START_OF_FRAME"]
     set generator_list [init_generator_with_duration $tx_port_list $DURATION $LOAD "START_OF_FRAME"]
     set analyzer_list [init_analyzer $port_object_list]
     config_result_view_mode JITTER
+
+    # mac learn
+    start_generator_list $learn_generator_list
+    stc::sleep 5
+    stc::perform generatorStop -generatorList $learn_generator_list
+    stc::perform analyzerStop -analyzerList $analyzer_list
+    clear_all_results $port_object_list
+    stc::sleep 2
+    stc::apply   
     
     puts "Test broadcast suppression with duration $DURATION"
     set jitter_result_view_list [config_jitter_result_view $stream_block_list]
